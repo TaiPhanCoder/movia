@@ -132,3 +132,47 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom header styles */
+@layer components {
+  .header-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset;
+  }
+  
+  .nav-item {
+    @apply relative px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  /* Dropdown animations */
+  @keyframes fade-scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fade-scale-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  .animate-fade-scale-in {
+    animation: fade-scale-in 0.2s ease-out;
+  }
+
+  .animate-fade-scale-out {
+    animation: fade-scale-out 0.15s ease-in;
+  }
+}

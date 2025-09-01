@@ -4,7 +4,6 @@ import { usePopularMovies } from '@/hooks/useMovies';
 import { useAppSelector, useAppDispatch } from '@/store';
 import { addToFavorites, removeFromFavorites } from '@/store/slices/moviesSlice';
 import {
-  DashboardHeader,
   MovieGrid,
   LoadingState,
   ErrorState
@@ -36,9 +35,7 @@ export function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen p-8">
-      <DashboardHeader favoritesCount={favorites.length} />
-      
+    <div className="min-h-screen p-8">      
       <main>
         <MovieGrid
           movies={moviesData.results}
