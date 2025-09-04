@@ -173,6 +173,8 @@
   }
 
   .animate-fade-scale-out {
-    animation: fade-scale-out 0.15s ease-in;
-  }
-}
+     animation: fade-scale-out 0.15s ease-in;
+   }
+ 
+   
+ }

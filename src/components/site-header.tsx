@@ -154,7 +154,7 @@ export function SiteHeader() {
                       <Link
                         href={item.href as string}
                         className={cn(
-                          "w-full",
+                          "cursor-pointer w-full",
                           item.danger && "text-destructive focus:text-destructive"
                         )}
                       >

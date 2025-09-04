@@ -76,6 +76,16 @@ export const useNowPlayingMovies = (page: number = 1): UseQueryResult<MoviesResp
   });
 };
 
+export const useNowPlayingBanner = (): UseQueryResult<Movie[], Error> => {
+  return useQuery({
+    queryKey: ['movies', 'nowPlayingBanner'],
+    queryFn: async () => {
+      const response = await movieApi.getNowPlaying(1);
+      return response.data.results.slice(0, 5);
+    },
+  });
+};
+
 export const useUpcomingMovies = (page: number = 1): UseQueryResult<MoviesResponse, Error> => {
   return useQuery({
     queryKey: ['movies', 'upcoming', page],

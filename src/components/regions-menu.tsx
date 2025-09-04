@@ -44,7 +44,7 @@ export function RegionsMenu({ className }: RegionsMenuProps) {
         <Button
           variant="ghost"
           className={cn(
-            "nav-item h-auto px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none data-[state=open]:bg-accent/50",
+            "nav-item h-auto px-3 py-2 text-sm font-medium transition-colors bg-transparent hover:bg-transparent hover:text-accent-foreground focus:bg-transparent focus:text-accent-foreground focus:outline-none data-[state=open]:bg-transparent outline-none ring-0 focus:ring-0",
             className
           )}
           aria-label="Danh sách quốc gia/region TMDB"
@@ -65,7 +65,7 @@ export function RegionsMenu({ className }: RegionsMenuProps) {
               <DropdownMenuItem key={region.code} asChild>
                 <Link
                   href={`/discover?region=${region.code}`}
-                  className="w-full cursor-pointer px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                  className="w-full cursor-pointer px-2 py-1.5 text-sm bg-transparent hover:bg-transparent hover:text-accent-foreground focus:bg-transparent focus:text-accent-foreground"
                 >
                   {region.label}
                 </Link>

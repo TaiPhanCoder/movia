@@ -108,7 +108,7 @@ export function MobileDrawer({ open, onOpenChange, navItems, userMenuItems }: Mo
                       key={item.href}
                       href={item.href}
                       onClick={handleLinkClick}
-                      className="flex items-center justify-between px-2 py-3 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+                      className="flex items-center justify-between px-2 py-3 text-sm font-medium rounded-md hover:bg-accent hover:text-accent-foreground transition-colors cursor-pointer"
                     >
                       <span>{item.label}</span>
                       {Icon ? (

@@ -3,6 +3,7 @@
 import { usePopularMovies } from '@/hooks/useMovies';
 import { useAppSelector, useAppDispatch } from '@/store';
 import { addToFavorites, removeFromFavorites } from '@/store/slices/moviesSlice';
+import { Banner } from '@/components/banner';
 import {
   MovieGrid,
   LoadingState,
@@ -35,8 +36,15 @@ export function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen p-8">      
-      <main>
+    <div className="min-h-screen">      
+      {/* Hero Banner */}
+      <Banner />
+      
+      {/* Main Content */}
+      <main className="p-8">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Phim Phổ Biến</h2>
+        </div>
         <MovieGrid
           movies={moviesData.results}
           favorites={favorites}
