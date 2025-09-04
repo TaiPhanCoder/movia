@@ -77,8 +77,8 @@ const loading = isLoading || !movie;
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-4 lg:px-8">
+      <div className="relative z-10 h-full flex items-end pb-20">
+        <div className="container px-4 lg:px-8 mx-4">
           <div className="max-w-2xl">
             <h1 className="text-4xl lg:text-6xl font-bold text-white mb-4 leading-tight">
               {movie.title}
@@ -119,6 +119,30 @@ const loading = isLoading || !movie;
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Carousel Indicators */}
+      <div className="absolute bottom-20 right-0 flex gap-2 overflow-x-auto scrollbar-hide px-4 z-20 no-scrollbar">
+        {movieData.map((movie, i) => (
+          <Button
+            key={movie.id}
+            onClick={() => setIndex(i)}
+            variant="ghost"
+            className={`
+              relative flex-shrink-0 w-24 h-14 p-0 rounded-xl
+              transition-all duration-300 ease-in-out hover:scale-105
+              ${i === index ? 'ring-2 ring-cyan-400 ring-offset-1 shadow-lg shadow-cyan-400/20' : ''}
+            `}
+          >
+            <Image
+              src={getImageUrl(movie.backdrop_path, 'w300')}
+              alt={movie.title}
+              fill
+              className="object-cover rounded-xl opacity-70"
+              sizes="96px"
+            />
+          </Button>
+        ))}
       </div>
     </div>
   );

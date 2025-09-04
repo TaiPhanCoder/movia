@@ -175,6 +175,13 @@
   .animate-fade-scale-out {
      animation: fade-scale-out 0.15s ease-in;
    }
- 
-   
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
  }
