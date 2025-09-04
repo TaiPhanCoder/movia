@@ -19,6 +19,7 @@ import { MobileDrawer } from "@/components/mobile-drawer"
 import { SearchDialog } from "@/components/search-dialog"
 import { GenresMenu } from "@/components/genres-menu"
 import { RegionsMenu } from "@/components/regions-menu"
+import { Logo } from "@/components/logo"
 
 interface NavItem {
   label: string
@@ -29,9 +30,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "Phim Lẻ", href: "/phim-le" },
   { label: "Phim Bộ", href: "/phim-bo" },
+  { label: "Chủ Đề", href: "/chu-de" },
   { label: "Diễn Viên", href: "/dien-vien" },
 ]
-
 const userMenuItems = [
   { label: "Trang cá nhân", href: "/me" },
   { label: "Cài đặt", href: "/settings" },
@@ -82,13 +83,7 @@ export function SiteHeader() {
     <>
       <header className="sticky top-0 z-50 w-screen border-b border-border/40 bg-background/95 header-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex h-16 w-screen items-center justify-between px-24 gap-3">
-          <Link href="/" className="flex items-center space-x-2" aria-label="Về trang chủ">
-            <img src="/icon.png" alt="Logo" className="h-12 w-12 rounded" />
-            <div className="flex flex-col">
-              <span className="text-lg font-semibold tracking-tight text-foreground">Movia</span>
-              <span className="text-xs text-muted-foreground hidden sm:block">Xem phim chất lượng</span>
-            </div>
-          </Link>
+          <Logo />
 
           {/* Desktop Search & Navigation */}
           <div className="hidden md:flex items-center flex-1 max-w-lg mx-4">

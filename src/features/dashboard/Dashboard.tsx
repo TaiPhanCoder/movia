@@ -4,6 +4,8 @@ import { usePopularMovies } from '@/hooks/useMovies';
 import { useAppSelector, useAppDispatch } from '@/store';
 import { addToFavorites, removeFromFavorites } from '@/store/slices/moviesSlice';
 import { Banner } from '@/components/banner';
+import { Categories } from '@/components/categories';
+import { Footer } from '@/components/footer';
 import {
   MovieGrid,
   LoadingState,
@@ -40,6 +42,9 @@ export function Dashboard() {
       {/* Hero Banner */}
       <Banner />
       
+      {/* Categories Section */}
+      <Categories />
+      
       {/* Main Content */}
       <main className="p-8">
         <div className="mb-8">
@@ -52,12 +57,7 @@ export function Dashboard() {
         />
       </main>
 
-      <footer className="mt-12 text-center text-muted-foreground">
-        <p>Powered by TMDB API</p>
-        <p className="text-sm mt-2">
-          Redux Toolkit + TanStack Query + Axios configured successfully! 🎉
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 }
