@@ -27,7 +27,7 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Hỗi Đáp</h3>
+            <h3 className="text-white font-semibold mb-4">Hỏi Đáp</h3>
             <ul className="space-y-2">
               <li><Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Chính sách bảo mật</Link></li>
               <li><Link href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Điều khoản sử dụng</Link></li>

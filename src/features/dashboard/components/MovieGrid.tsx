@@ -16,8 +16,6 @@ export function MovieGrid({ movies, favorites, onToggleFavorite }: MovieGridProp
         <MovieCard
           key={movie.id}
           movie={movie}
-          isFavorite={favorites.includes(movie.id)}
-          onToggleFavorite={onToggleFavorite}
         />
       ))}
     </div>

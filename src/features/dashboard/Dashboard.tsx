@@ -43,7 +43,7 @@ export function Dashboard() {
       <Banner />
       
       {/* Categories Section */}
-      <Categories />
+      <Categories showAll={false} />
       
       {/* Main Content */}
       <main className="p-8">
@@ -56,8 +56,6 @@ export function Dashboard() {
           onToggleFavorite={handleToggleFavorite}
         />
       </main>
-
-      <Footer />
     </div>
   );
 }

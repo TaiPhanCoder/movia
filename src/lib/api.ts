@@ -64,6 +64,14 @@ export const movieApi = {
   // Get similar movies
   getSimilarMovies: (movieId: number) => 
     tmdbApi.get(`/movie/${movieId}/similar`),
+  
+  // Get movies by genre
+  getMoviesByGenre: (genreId: number, page: number = 1) => 
+    tmdbApi.get(`/discover/movie?with_genres=${genreId}&page=${page}&sort_by=popularity.desc`),
+  
+  // Get all genres
+  getGenres: () => 
+    tmdbApi.get('/genre/movie/list'),
 };
 
 // Helper function to get full image URL

@@ -2,61 +2,79 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Heart, Star } from 'lucide-react';
 import { getImageUrl } from '@/lib/api';
 import { Movie } from '@/hooks/useMovies';
+import Image from 'next/image';
+import { Play, Heart, Info } from 'lucide-react';
 
 interface MovieCardProps {
   movie: Movie;
-  isFavorite: boolean;
-  onToggleFavorite: (movieId: number) => void;
 }
 
-export function MovieCard({ movie, isFavorite, onToggleFavorite }: MovieCardProps) {
+export function MovieCard({ movie }: MovieCardProps) {
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-      <div className="relative">
-        <img
-          src={getImageUrl(movie.poster_path)}
-          alt={movie.title}
-          className="w-full h-64 object-cover"
-          onError={(e) => {
-            e.currentTarget.src = '/placeholder-movie.jpg';
-          }}
-        />
-        <Button
-          variant={isFavorite ? "default" : "outline"}
-          size="icon"
-          className={`absolute top-2 right-2 rounded-full ${
-            isFavorite 
-              ? 'bg-red-500 hover:bg-red-600 text-white' 
-              : 'bg-white/90 hover:bg-white text-gray-600'
-          }`}
-          onClick={() => onToggleFavorite(movie.id)}
-        >
-          <Heart 
-            className={`h-4 w-4 ${
-              isFavorite ? 'fill-current' : ''
-            }`} 
+    <div className="group relative cursor-pointer">
+      {/* Original Card */}
+      <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group-hover:opacity-0">
+        <div className="relative">
+          <Image
+            src={getImageUrl(movie.poster_path)}
+            alt={movie.title}
+            width={500}
+            height={300}
+            className="w-full h-64 object-cover"
+            onError={(e) => {
+              e.currentTarget.src = '/placeholder-movie.jpg';
+            }}
           />
-        </Button>
-      </div>
-      <CardContent className="p-4">
-        <h3 className="font-semibold text-lg mb-2 line-clamp-2">{movie.title}</h3>
-        <p className="text-sm text-muted-foreground mb-2">
-          Release: {new Date(movie.release_date).getFullYear()}
-        </p>
-        <div className="flex items-center justify-between">
-          <Badge variant="secondary" className="flex items-center gap-1">
-            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-            {movie.vote_average.toFixed(1)}
-          </Badge>
-          <span className="text-xs text-muted-foreground">
-            {movie.vote_count} votes
-          </span>
         </div>
-      </CardContent>
-    </Card>
+        <CardContent className="p-4">
+          <h3 className="font-semibold text-lg mb-2 line-clamp-2 text-center">{movie.title}</h3>
+        </CardContent>
+      </Card>
+
+      {/* Overlay Card - Replaces original on hover */}
+      <Card className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105 group-hover:z-10 group-hover:shadow-2xl">
+        <div className="relative h-full">
+          <Image
+            src={getImageUrl(movie.poster_path)}
+            alt={movie.title}
+            width={500}
+            height={300}
+            className="w-full h-64 object-cover opacity-30"
+            onError={(e) => {
+              e.currentTarget.src = '/placeholder-movie.jpg';
+            }}
+          />
+          
+          {/* Content overlay */}
+          <div className="absolute inset-0 flex flex-col justify-end p-4">
+            <div className="text-center mb-4">
+              <h3 className="text-white font-bold text-xl mb-3 line-clamp-2">{movie.title}</h3>
+              <div className="flex items-center justify-center gap-2 text-yellow-400 mb-3">
+                <span className="text-lg font-semibold">⭐ {movie.vote_average?.toFixed(1) || 'N/A'}</span>
+                <span className="text-gray-300 text-sm">({movie.vote_count || 0} đánh giá)</span>
+              </div>
+              <p className="text-gray-200 text-sm line-clamp-4 mb-4">
+                {movie.overview || 'Không có mô tả phim'}
+              </p>
+            </div>
+            
+            <div className="flex gap-2 justify-center">
+              <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4">
+                <Play className="w-4 h-4 mr-2" />
+                Xem ngay
+              </Button>
+              <Button size="sm" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
+                <Heart className="w-4 h-4" />
+              </Button>
+              <Button size="sm" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
+                <Info className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
   );
 }
